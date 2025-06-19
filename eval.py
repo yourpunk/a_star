@@ -1,4 +1,4 @@
-import student, time, argparse, json
+import star, time, argparse, json
 from blockworld import BlockWorld
 
 parser = argparse.ArgumentParser(description='Evaluate the algorithm on a given problem from problems/.')
@@ -14,8 +14,8 @@ def load_problem(n, pid):
 
 problem = load_problem(args.n, args.pid)
 
-astar = student.AStar()
-start = student.BlockWorldHeuristic(state=problem['start'])
+astar = star.AStar()
+start = star.BlockWorldHeuristic(state=problem['start'])
 goal = BlockWorld(state=problem['goal'])
 
 t_start = time.time()
