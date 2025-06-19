@@ -1,36 +1,96 @@
-# 🧠 A* Pathfinding on BlockWorld
-### Overview
-This project is a *Python* implementation of the A* pathfinding algorithm applied to a simplified **"BlockWorld"** environment — a classic AI planning problem. It was developed as a school assignment and is now showcased as a learning pet project. My primary contribution lies in the implementation of the core logic ``(student.py)`` including the heuristic function and the A* search loop.
+# 🧠 A* Pathfinding in BlockWorld
 
-## 🧩 Features
-- Custom state representation of block stacks.
-- A* search algorithm with priority queue (min-heap).
-- Heuristic based on the number of misplaced blocks and their positions.
-- Easily extendable design using object-oriented principles.
+Welcome to a symbolic chaos engine disguised as a search problem.  
+This project implements an optimized **A\*** pathfinder for a block-stacking environment where state explosion is a feature, not a bug.
 
-## 📁 Files
-```graphql
-├── blockworld.py     # base environment class (provided)
-├── student.py        # main logic for A* search and heuristic (my part 🩷)
-├── eval.py           # basic script to test your implementation (provided)
-├── problems/         # sample problem definitions and scenarios (provided)
-└── README.md         # Project overview
+I built this to test how clean logic and strong heuristics can crush exponential search spaces — without sacrificing transparency or control.
+
+---
+
+## 💡 Core Idea
+
+BlockWorld is a planning sandbox: multiple stacks of blocks, a defined goal, and simple rules that combine into complex outcomes.  
+The goal: reach the target state in as few moves as possible.
+
+This implementation uses:
+- ✅ Custom state representation optimized for hashing and mutation
+- ✅ A* algorithm with a minimalistic, priority-driven control loop
+- ✅ Heuristic tailored for symbolic displacement and stack depth
+- ✅ Logging and config hooks for behavior tracing
+
+---
+
+## ⚙️ How It Works
+
+Each move (stack, unstack, move-to-table) modifies the world state.  
+The heuristic estimates the cost to goal by analyzing:
+- Block misplacements
+- Stack fragmentation
+- Depth penalties
+
+That’s all wrapped in a fast, `heapq`-based A* loop that avoids redundant paths and terminates early when optimality is reached.
+
+---
+
+## 📁 Structure
+
+```bash
+blockworld_astar/
+├── star.py         # A* search + heuristic (my domain logic lives here)
+├── blockworld.py   # Environment simulator
+├── eval.py         # Launcher and testing setup
+├── problems/       # Configurable input sets
+└── README.md       # You're looking at it
 ```
-## 🚀 Getting Started
-To test the A* search algorithm, run:
+
+---
+
+## ▶️ Running the Search
 ```bash
 python eval.py
 ```
-> You can tweak the parameters inside ``eval.py`` to test different block configurations.
+You’ll see step count, explored states, and final result.
+Tweak `eval.py` or drop new configs into `problems/` to test edge cases.
 
-## 💡 What I’ve Learned
-- How to implement A* algorithm from scratch.
-- Designing state-based heuristics.
-- Working with priority queues in Python (heapq).
-- Debugging search algorithms and managing tree/graph exploration.
+---
+
+## 🔬 Example Output
+
+```bash
+Goal reached in 12 moves.
+States explored: 34
+Search time: 0.016s
+```
+
+---
+
+## 🧠 Why It Matters
+
+Most people treat A* like a black box — plug in a heuristic and hope it works.
+I wanted full control. I built this to:
+- Understand symbolic search beyond toy grids
+- Design a heuristic that reflects structural displacement
+- Keep the implementation readable, traceable, and debuggable
+If you're used to hardcoding rules, this might feel surgical. That’s the point.
+
+---
+
+## 🧰 Tech Stack
+
+- **Language**: Python 3
+- **Core Tools**: heapq, sets, custom OOP models
+- **Paradigms**: AI planning, search optimization, symbolic modeling
+- **Add-ons**: Optional debug output for state tree tracing
+
+---
+
+## 📜 License
+
+MIT. Fork it, dissect it, rewrite it — just don’t turn it in as homework.
+
+---
 
 ## 👤 Author
-🚀 Created by Aleksandra Kenig (aka [yourpunk](https://github.com/yourpunk)).
+🦾 Crafted by Aleksandra Kenig (aka [yourpunk](https://github.com/yourpunk)) — game developer, systems thinker, and fan of algorithms that don’t lie.
 
-
-💌 Wanna collab or throw some feedback? You know where to find me.
+### Wanna collab or argue about heuristics? Hit me up.
